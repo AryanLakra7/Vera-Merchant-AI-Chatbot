@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: vera-bot
+    runtime: python
+    plan: starter          # use a paid always-on plan for the test window; free tier sleeps and loses in-memory state
+    buildCommand: "echo no deps"
+    startCommand: "python bot.py"
+    healthCheckPath: /v1/healthz
+    envVars:
+      - key: TEAM_NAME
+        value: Team Vera+
+      - key: TEAM_MEMBERS
+        value: Your Name
+      - key: CONTACT_EMAIL
+        value: you@example.com
+      - key: ANTHROPIC_API_KEY   # optional
+        sync: false
